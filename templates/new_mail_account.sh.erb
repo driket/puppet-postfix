@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# THIS FILE IS MANAGED BY PUPPET
+# <%= file %>
+#
+# usable variable
+HOME_PATH=/home
+
+# ------- no user change beyond this point --------
+
+if [ ! $1 ]
+then
+  echo "Syntax : new_mail_account.sh <new_unix_user>"
+  exit
+fi
+
+USER=$1
+USER_HOME=${HOME_PATH}/${USER}
+USER_MAILDIR=${USER_HOME}/Maildir
+
+useradd -m -d ${USER_HOME} -s /bin/bash ${USER}
+maildirmake ${USER_MAILDIR}
+chown -R ${USER}:${USER} ${USER_MAILDIR}
+passwd ${USER}

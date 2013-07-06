@@ -1,0 +1,7 @@
+#
+# THIS FILE IS MANAGED BY PUPPET
+# <%= file %>
+#
+<% for config_line in @config -%>
+<%= config_line['mail'] %>			<%= config_line['dest']%>
+<% end -%>
