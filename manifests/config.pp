@@ -27,9 +27,9 @@ class mv_postfix::config {
 
    	file { '/var/spool/postfix/var/run/saslauthd/':
 				ensure		=> directory, 
-      	owner 		=> 'root',
+      	owner 		=> 'postfix',
       	group 		=> 'sasl',
-      	mode 		=> '0711',
+      	mode 			=> '0711',
       	require 	=> Package['mv_postfix'],
    	}
    	file { "${mv_postfix::params::config_path}/sasl/smtpd.conf":
