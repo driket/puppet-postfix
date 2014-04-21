@@ -15,6 +15,6 @@ define mv_postfix::tools::imap_ssl(
 		group   => 'root',
 		mode    => '644',
 		notify 	=> Service['mv_postfix'],
-		require => Package['mv_postfix'],
+		require => Package['postfix', 'courier-imap', 'mailutils', 'courier-imap-ssl', 'sasl2-bin', 'lftp'],
    }
 }

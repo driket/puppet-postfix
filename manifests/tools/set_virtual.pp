@@ -18,12 +18,12 @@ define mv_postfix::tools::set_virtual($config_file = "${mv_postfix::params::conf
     group   => 'root',
     mode    => '644',
 	  notify => Exec['mv_postmap'],
-    require => Package['mv_postfix'],
+    require => Package['postfix', 'courier-imap', 'mailutils', 'courier-imap-ssl', 'sasl2-bin', 'lftp'],
   }
 	
 	exec { "mv_postmap":
 		command => "/usr/sbin/postmap ${config_file}",
-		require => Package["mv_postfix"],
+		require => Package['postfix', 'courier-imap', 'mailutils', 'courier-imap-ssl', 'sasl2-bin', 'lftp'],
 		notify => Service["mv_postfix"],
 		refreshonly => true,
 	}

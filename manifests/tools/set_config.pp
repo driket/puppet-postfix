@@ -17,7 +17,7 @@ define mv_postfix::tools::set_config(
 		group   => 'root',
 		mode    => '644',
 		notify 	=> Service['mv_postfix'],
-		require => Package['mv_postfix'],
+		require => Package['postfix', 'courier-imap', 'mailutils', 'courier-imap-ssl', 'sasl2-bin', 'lftp'],
    }
  	file { "${mv_postfix::params::config_path}/master.cf":
 		ensure 	=> file,
@@ -26,6 +26,6 @@ define mv_postfix::tools::set_config(
  		group   => 'root',
  		mode    => '644',
  		notify 	=> Service['mv_postfix'],
- 		require => Package['mv_postfix'],
+ 		require => Package['postfix', 'courier-imap', 'mailutils', 'courier-imap-ssl', 'sasl2-bin', 'lftp'],
     }
 }
