@@ -68,7 +68,7 @@ myorigin = $mydomain
 mydestination = <%= @config['mydestination'].join(', ') %>
 relayhost =
 # mynetworks = 127.0.0.0/8, 192.168.2.0/24
-mynetworks = <%= @config['mynetworks'] %>
+mynetworks = <%= @config['mynetworks'].join(', ') %>
 mailbox_size_limit = <%= @config['mailbox_size_limit']%>
 message_size_limit = <%= @config['message_size_limit']%>
 #mailbox_command = procmail -a "$EXTENSION"
